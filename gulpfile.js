@@ -14,7 +14,7 @@ minify = require('gulp-minify-css'),
 del = require('del');
 
 gulp.task('styles',function(){
-  return gulp.src('./app/assets/styles/**/*.pcss')
+  return gulp.src('./app/assets/styles/style.pcss')
   .pipe(map.init())
   .pipe(postcss([imports, vars, nested, mixins, hexrgba, prefix]))
   .on('error', function(infoError){
@@ -31,6 +31,7 @@ gulp.task('styles',function(){
 gulp.task('watch', function(){
 
   sync.init({
+    notify: false,
     proxy: "http://localhost/inventory/app/",
     port: 80
   })
