@@ -363,6 +363,10 @@ body.create-form{
   background: linear-gradient(to right, #2193b0, #6dd5ed);
 }
 
+body.edit-form{
+  background: linear-gradient(to right, #649173, #dbd5a4);
+}
+
 form{
   background: rgba(255,255,255,.1);
   width: 325px;
@@ -394,17 +398,27 @@ form input[type="submit"]{
     padding: 8px 16px;
     background: #fff;
     margin-bottom: 20px;
+    transition: 200ms ease-in-out all;
   }
+
+form input[type="submit"]:hover{
+      background: #000;
+      color:#fff;
+    }
 
 form .inline{
     display: inline;
   }
 
 form .small-input{
-    display: inline;
+    display: inline-block;
     width: 40px;
     margin: 0 0 0 6px;
   }
+
+form .small-input__dubble{
+      width: 130px;
+    }
 
 form .border-radius-n{
     border-radius: 2px;
@@ -431,4 +445,46 @@ form label.error
       font-weight: 400;
       border-radius: 3px;
     }
+
+form .margin-none{
+    margin: 0;
+  }
+
+form .incress-width{
+    width: 185px;
+  }
+
+form.edit{
+  background: rgba(255,255,255,.3);
+  width: 270px
+}
+
+nav::after,ul::after,li::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+nav{
+  background: rgba(255,255,255,.5);
+  height: auto;
+  text-align: center;
+}
+
+nav ul{
+    list-style: none;
+    margin: 0 auto 0 auto;
+    width: 450px;
+    padding: 0;
+  }
+
+nav ul li{
+      float: left;
+    }
+
+nav a{
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+  }
 /*# sourceMappingURL=style.css.map */

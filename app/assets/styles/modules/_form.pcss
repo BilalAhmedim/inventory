@@ -26,14 +26,22 @@ form{
     padding: 8px 16px;
     background: #fff;
     margin-bottom: 20px;
+    transition: 200ms ease-in-out all;
+    &:hover{
+      background: #000;
+      color:#fff;
+    }
   }
   .inline{
     display: inline;
   }
   .small-input{
-    display: inline;
+    display: inline-block;
     width: 40px;
     margin: 0 0 0 6px;
+    &__dubble{
+      width: 130px;
+    }
   }
   .border-radius-n{
     border-radius: 2px;
@@ -56,4 +64,15 @@ form{
       font-weight: 400;
       border-radius: 3px;
     }
+  .margin-none{
+    margin: 0;
+  }
+  .incress-width{
+    width: 185px;
+  }
+}
+
+form.edit{
+  background: rgba(#fff,.3);
+  width: 270px
 }
