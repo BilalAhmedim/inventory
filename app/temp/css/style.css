@@ -359,12 +359,45 @@ header h1{
     border-bottom: 1px solid #fff;
   }
 
+body.home{
+  background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
+
 body.create-form{
   background: linear-gradient(to right, #2193b0, #6dd5ed);
 }
 
 body.edit-form{
   background: linear-gradient(to right, #649173, #dbd5a4);
+}
+
+.main-box{
+  width: 100vw;
+  display: flex;
+  background: rgba(255,255,255, .3);
+  overflow: hidden;
+}
+
+.create-box, .add-box, .edit-box, .delete-box{
+  width: 50vw;
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+.create-box h1 a,.add-box h1 a,.edit-box h1 a,.delete-box h1 a{
+    text-decoration: none;
+    color: #000;
+    padding: 110.5px 0px;
+    display: block;
+  }
+
+.border-r{
+  border-right: 1px solid #000;
+}
+
+.border-t{
+  border-top: 1px solid #000;
 }
 
 form{
@@ -406,6 +439,10 @@ form input[type="submit"]:hover{
       color:#fff;
     }
 
+form input[type="number"],form input[type="text"],form input[type="date"]{
+    padding-left: 10px;
+  }
+
 form .inline{
     display: inline;
   }
@@ -423,14 +460,6 @@ form .small-input__dubble{
 form .border-radius-n{
     border-radius: 2px;
     padding: 0;
-  }
-
-form input::-webkit-input-placeholder{
-    padding-left: 10px;
-  }
-
-form input.small-input::-webkit-input-placeholder{
-    padding-left: 0px;
   }
 
 form .margin-top-small{
