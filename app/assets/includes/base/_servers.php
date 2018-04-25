@@ -1,6 +1,9 @@
 <?php
-  $connect_inventory = mysqli_connect('localhost','root','','inventory');
-  if( !$connect_inventory ){
-    die('Query Failed '.$connect_inventory);
+  function connectDb( $dataBase ){
+    $connect =  mysqli_connect('localhost','root','', $dataBase);
+    if( !$connect ){
+      die('Query Failed '.$connect);
+    }
+    return $connect =  mysqli_connect('localhost','root','', $dataBase);
   }
 ?>

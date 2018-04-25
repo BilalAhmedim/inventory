@@ -443,6 +443,10 @@ form input[type="number"],form input[type="text"],form input[type="date"]{
     padding-left: 10px;
   }
 
+form input[name="alert"]{
+    padding: 0;
+  }
+
 form .inline{
     display: inline;
   }
@@ -485,7 +489,7 @@ form .incress-width{
 
 form.edit{
   background: rgba(255,255,255,.3);
-  width: 270px
+  width: 314px
 }
 
 nav::after,ul::after,li::after{
