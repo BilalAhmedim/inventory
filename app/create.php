@@ -18,12 +18,15 @@
     <?php include './assets/includes/modules/_navigation.php'; ?>
     <h1>Create Item</h1>
   </header>
-  <form action="./create.php" method="POST">
+  <form action=<?php echo $_SERVER['PHP_SELF']?> method="POST" class="margin-top-pl">
     <label for="catagory">Select Catagory</label>
     <select name="catagory">
       <option value="0">--Select Catagory--</option>
-      <option value="1">Hello</option>
-      <option value="2">Polish</option>
+      <option value=<?php echo "'".$manuf."'"?>>Manufacturing</option>
+      <option value=<?php echo "'".$polish."'"?>>Polishing</option>
+      <option value=<?php echo "'".$tools."'"?>>Tooling</option>
+      <option value=<?php echo "'".$plating."'"?>>Plating</option>
+      <option value=<?php echo "'".$pack."'"?>>Packaging</option>
     </select>
     <label for="item_name">Item Name:</label>
     <input placeholder="Item Name" type="text" name="item_name" >
@@ -37,6 +40,10 @@
         }
         if( !empty($nameErr)){
           echo "<p>".$nameErr."</p>";
+          exit();
+        }
+        if( !empty($execute_queryErr)){
+          echo "<p>".$execute_queryErr."</p>";
           exit();
         }
       ?>

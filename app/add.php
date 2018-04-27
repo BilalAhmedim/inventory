@@ -1,3 +1,7 @@
+<?php
+  include './assets/includes/modules/_addPage_Validation.php';
+  include './assets/includes/base/_variables.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +16,15 @@
     <?php include './assets/includes/modules/_navigation.php';?>
     <h1>Add Item</h1>
   </header>
-  <form action="#" method="POST" class="edit">
+  <form action="#" method="POST" class="edit" enctype="multipart/form-data">
     <label for="catagory">Catagory:</label>
     <select name="catagory">
       <option value="0">--Select Catagory--</option>
-      <option value="1">DATA 1</option>
-      <option value="2">Data 2</option>
+      <option value=<?php echo "'".$manuf."'"?>>Manufacturing</option>
+      <option value=<?php echo "'".$polish."'"?>>Polishing</option>
+      <option value=<?php echo "'".$tools."'"?>>Tooling</option>
+      <option value=<?php echo "'".$plating."'"?>>Plating</option>
+      <option value=<?php echo "'".$pack."'"?>>Packaging</option>
     </select>
     <label for="select_item">Select Item:</label>
     <select name="select_item">
@@ -44,8 +51,36 @@
     <input type="file" name="item_image"><br>
     <label for="alert" class="inline" class="margin-top-small">Alert If Item is Lessthan or is Equal to:</label>
     <input placeholder="nmbr" type="text" name="alert" class="small-input margin-top-small">
-    <label for="error" class="error" name="error"></label><br>
+    <label></label>
     <input type="submit" name="submit" class="border-radius-n">
+    <label for="error" class="error" name="error">
+    <?php
+      if( !empty($catagoryErr) ){
+        echo "<p>" . $catagoryErr . "</p>";
+      }
+      if( !empty($select_itemErr) ){
+        echo "<p>" . $select_itemErr . "</p>";
+      }
+      if( !empty($descriptionErr) ){
+        echo "<p>" . $descriptionErr . "</p>";
+      }
+      if( !empty($amountErr) ){
+        echo "<p>" . $amountErr . "</p>";
+      }
+      if( !empty($priceErr) ){
+        echo "<p>" . $priceErr . "</p>";
+      }
+      if( !empty($supplierErr) ){
+        echo "<p>" . $supplierErr . "</p>";
+      }
+      if( !empty($dateErr) ){
+        echo "<p>" . $dateErr . "</p>";
+      }
+      if( !empty($alertErr) ){
+        echo "<p>" . $alertErr . "</p>";
+      }
+    ?>
+    </label>
   </form>
 </body>
 </html>

@@ -410,6 +410,10 @@ form{
   border-radius: 4px;
 }
 
+form.margin-top-pl {
+    margin-top: 100px;
+  }
+
 form label{
     display: block;
     margin-top: 15px;

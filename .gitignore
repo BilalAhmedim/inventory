@@ -1,3 +1,7 @@
 node_modules/
 package-lock.json
 */**/*.css.map
+.buildpath
+.project
+.settings/
+.vscode/
