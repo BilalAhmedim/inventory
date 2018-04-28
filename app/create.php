@@ -18,10 +18,17 @@
     <?php include './assets/includes/modules/_navigation.php'; ?>
     <h1>Create Item</h1>
   </header>
-  <form action=<?php echo $_SERVER['PHP_SELF']?> method="POST" class="margin-top-pl">
+  <?php
+    if( isset($_GET['success'])){
+      if( $_GET['success'] ){
+        echo "<div class='success'><p>Item ".$_GET['item_name']." Created Successfully.<span class='close'></span></p></div>";
+      }
+    }
+  ?>
+  <form method="POST" class="margin-top-pl">
     <label for="catagory">Select Catagory</label>
     <select name="catagory">
-      <option value="0">--Select Catagory--</option>
+      <option value=0>--Select Catagory--</option>
       <option value=<?php echo "'".$manuf."'"?>>Manufacturing</option>
       <option value=<?php echo "'".$polish."'"?>>Polishing</option>
       <option value=<?php echo "'".$tools."'"?>>Tooling</option>
@@ -32,7 +39,7 @@
     <input placeholder="Item Name" type="text" name="item_name" >
     <label></label>
     <input type="submit" name="submit" class="border-radius-n">
-    <label for="error" class="error" name="error">
+    <label for="error" class="error">
       <?php
         if( !empty($catErr)){
           echo "<p>".$catErr."</p>";
@@ -49,5 +56,6 @@
       ?>
     </label>
   </form>
+  <script src="temp/scripts/App.js"></script>
 </body>
 </html>

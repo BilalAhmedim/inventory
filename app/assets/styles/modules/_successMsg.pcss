@@ -1,0 +1,40 @@
+.success{
+  width: 90%;
+  margin: 20px auto 0 auto;
+  box-sizing: border-box;
+  background: #20bf6b;
+  text-align: center;
+  padding: 1px 0;
+  border-radius: 10px;
+  position: relative;
+  transition: 300ms ease-in-out all;
+
+  p{
+    color: #fff;
+    font-weight: 400;
+  }
+
+  span{
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    background: rgba(#000, .5);
+    border-radius: 3px;
+    cursor: pointer;
+    &::after{
+      content: "X";
+      display: block;
+      position: absolute;
+      top: 2px;
+      left: 6px;
+      color:#fff;
+    }
+  }
+
+  &__hide{
+    display: none !important;
+    overflow: hidden;
+  }
+}
