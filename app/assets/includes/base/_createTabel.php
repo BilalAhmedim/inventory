@@ -11,5 +11,11 @@
     left_quantity int(3) NOT NULL,
     amount_type varchar(3) NOT NULL,
     description varchar(255) NOT NULL
+  );";
+
+  $otherTabel = "CREATE TABLE IF NOT EXISTS other(
+    id int(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name varchar(200) NOT NULL,
+    image varchar(255) NOT NULL
   );"
 ?>

@@ -1,5 +1,6 @@
 <?php
-// For read particular Row af any Tabel
+  include './assets/includes/base/_servers.php';
+// For read particular Row af any Tabe
   function dataBaseRead($database, $table, $query){
     $connectTo = mysqli_connect('localhost', 'root', '', $database);
     $sql = mysqli_query($connectTo, "SELECT " . $query . " FROM " . $table);
@@ -10,9 +11,21 @@
     return $result[$query];
   }
 
+  //  Select All Inside Tabels
   function returnTable($dataBase, $table){
-    $connectTo = connectDb($database);
+    $connectTo = connectDb($dataBase);
     $sql = "SELECT * FROM ".$table;
-    return $result = mysqli_query($connectTo, $sql);
+    $result = mysqli_query($connectTo, $sql);
+    return $result;
+  }
+
+  //  Insert Into Tabel
+  function insertInto($dataBase,$name){
+    $connectTo = connectDb($dataBase);
+    $query = "INSERT INTO other (name) VALUE('$name')";
+    $sql = mysqli_query($connectTo, $query);
+    if( !$sql ){
+      $other = "InsetInfo Function Connection Filed ".mysqli_error($sql);
+    }
   }
 ?>

@@ -1,6 +1,6 @@
 <?php
+  include './assets/includes/modules/_functions.php';
   include './assets/includes/modules/_addPage_Validation.php';
-  include './assets/includes/base/_variables.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,13 @@
     <?php include './assets/includes/modules/_navigation.php';?>
     <h1>Add Item</h1>
   </header>
+  <?php
+    if( isset($_GET['success'])){
+      if( $_GET['success'] ){
+        echo "<div class='success-parent'><div class='success'><p>Item <strong>&quot;".$_GET['item_name']."&quot;</strong> Created Successfully.<span class='close'></span></p></div></div>";
+      }
+    }
+  ?>
   <form action="#" method="POST" class="edit" enctype="multipart/form-data">
     <label for="catagory">Catagory:</label>
     <select name="catagory">
@@ -29,8 +36,14 @@
     <label for="select_item">Select Item:</label>
     <select name="select_item">
       <option value="0">--Select Item--</option>
-      <option value="1">DATA 1</option>
-      <option value="2">Data 2</option>
+      <?php
+        $cat = $_POST['catagory'];
+        $query = returnTable($cat,"other");
+        while( $row = mysqli_fetch_array($query) ){
+          $Fullname = str_replace(" ","_",$row['name']);
+          echo "<option value=". $Fullname.">". $row['name']."</option>";
+        }
+      ?>
     </select>
     <label for="description">Description:</label>
     <input placeholder="Item Desceiption" type="text" name="description">
@@ -53,7 +66,7 @@
     <input placeholder="nmbr" type="text" name="alert" class="small-input margin-top-small">
     <label></label>
     <input type="submit" name="submit" class="border-radius-n">
-    <label for="error" class="error" name="error">
+    <label for="error" class="error">
     <?php
       if( !empty($catagoryErr) ){
         echo "<p>" . $catagoryErr . "</p>";
@@ -82,5 +95,6 @@
     ?>
     </label>
   </form>
+  <script src="temp/scripts/App.js"></script>
 </body>
 </html>

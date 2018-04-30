@@ -1,5 +1,4 @@
 <?php
-  include './assets/includes/base/_servers.php';
   include './assets/includes/base/_variables.php';
   include './assets/includes/modules/_functions.php';
   include './assets/includes/modules/_createPage_Validation.php';
@@ -51,6 +50,10 @@
         }
         if( !empty($execute_queryErr)){
           echo "<p>".$execute_queryErr."</p>";
+          exit();
+        }
+        if( !empty($other)){
+          echo "<p>".$other."</p>";
           exit();
         }
       ?>

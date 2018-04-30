@@ -1,7 +1,7 @@
 <?php
   include './assets/includes/modules/_redirect.php';
   $name;
-  $catErr = $nameErr = $execute_queryErr = $success = '';
+  $catErr = $nameErr = $execute_queryErr = $success = $other ='';
   if( isset($_POST['submit'] )){
     $catagory = $_POST['catagory'];
     $name = $_POST['item_name'];
@@ -21,6 +21,9 @@
         $execute_queryErr = "Error Cannot Create the ".$name. mysqli_error($selectedDataBase) or mysqli_error($execute_query);
       }
     }
+    $selectedDataBase = connectDb($catagory);
+    $execute_query = mysqli_query($selectedDataBase, $otherTabel);
+    insertInto($catagory,$name);
     redirect("create.php?success=true&item_name=".$name);
   }
 ?>

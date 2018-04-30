@@ -16,7 +16,6 @@ if(targetButton){
 
     function close(){
       targetParentDiv.removeChild(targetParentChild);
-      window.location = 'create.php';
     }
     setTimeout(close, 300);
   }
