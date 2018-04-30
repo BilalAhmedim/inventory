@@ -21,7 +21,7 @@
   <?php
     if( isset($_GET['success'])){
       if( $_GET['success'] ){
-        echo "<div class='success'><p>Item ".$_GET['item_name']." Created Successfully.<span class='close'></span></p></div>";
+        echo "<div class='success-parent'><div class='success'><p>Item <strong>&quot;".$_GET['item_name']."&quot;</strong> Created Successfully.<span class='close'></span></p></div></div>";
       }
     }
   ?>

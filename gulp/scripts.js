@@ -1,19 +1,13 @@
-var gulp = require('gulp'),
-webpack = require('webpack');
+var gulp = require('gulp');
+var webpack = require('webpack');
 
 gulp.task('scripts', function(callBack){
-  
-  webpack(function(Err,Status){
+  webpack(require('../webpack.config.js'), function(Err,stats){
     if(Err){
       console.log( Err.toString() );
     }
-    console.log(status);
+    console.log(stats.toString());
     callBack();
   });
   
-});
-
-
-gulp.task('scriptsRefresh', ['scripts'], function(){
-
 });

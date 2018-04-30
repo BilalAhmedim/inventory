@@ -1,11 +1,1 @@
-class newclass{
-  constructor(name){
-    this.name = name;
-  }
-  greet(){
-    console.log( this.name + " World!" );
-  }
-}
-
-var person = new newclass();
-person.greet("Hello ");
+import close from './modules/_close';

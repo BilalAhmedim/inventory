@@ -75,20 +75,47 @@
 /*!***********************************!*\
   !*** ./app/assets/scripts/App.js ***!
   \***********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_close__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/_close */ "./app/assets/scripts/modules/_close.js");
+/* harmony import */ var _modules_close__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_close__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+
+/***/ "./app/assets/scripts/modules/_close.js":
+/*!**********************************************!*\
+  !*** ./app/assets/scripts/modules/_close.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-class newclass {
-  constructor(name) {
-    this.name = name;
-  }
-  greet() {
-    console.log(this.name + " World!");
+var targetButton = document.querySelector('.close'),
+    targetParentDiv = document.querySelector('.success-parent');
+targetParentChild = document.querySelector('.success');
+
+if (targetButton) {
+
+  targetButton.addEventListener('click', closeButtom);
+
+  function closeButtom() {
+
+    if (targetParentChild.classList[1] == null) {
+      targetParentChild.classList.add('hide');
+    } else if (targetParentChild.classList[1]) {
+      targetParentChild.classList.remove('hide');
+    }
+
+    function close() {
+      targetParentDiv.removeChild(targetParentChild);
+      window.location = 'create.php';
+    }
+    setTimeout(close, 300);
   }
 }
-
-var person = new newclass();
-person.greet("Hello ");
 
 /***/ })
 
