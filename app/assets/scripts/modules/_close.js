@@ -4,9 +4,9 @@ targetParentChild =document.querySelector('.success');
 
 if(targetButton){
   
-  targetButton.addEventListener('click', closeButtom);
+  targetButton.addEventListener('click', closeButton);
 
-  function closeButtom(){
+  function closeButton(){
     
     if(targetParentChild.classList[1] == null){
       targetParentChild.classList.add('hide');

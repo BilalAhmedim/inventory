@@ -22,26 +22,51 @@
         echo "<div class='success-parent'><div class='success'><p>Item <strong>&quot;".$_GET['item_name']."&quot;</strong> Created Successfully.<span class='close'></span></p></div></div>";
       }
     }
+    $check='';
+    if( !empty($_GET['DataBase'])){
+      $check = $_GET['DataBase'];
+    }
   ?>
   <form action="#" method="POST" class="edit" enctype="multipart/form-data">
     <label for="catagory">Catagory:</label>
-    <select name="catagory">
+    <select name="catagory" class="catagory" onchange="OnChange()">
       <option value="0">--Select Catagory--</option>
-      <option value=<?php echo "'".$manuf."'"?>>Manufacturing</option>
-      <option value=<?php echo "'".$polish."'"?>>Polishing</option>
-      <option value=<?php echo "'".$tools."'"?>>Tooling</option>
-      <option value=<?php echo "'".$plating."'"?>>Plating</option>
-      <option value=<?php echo "'".$pack."'"?>>Packaging</option>
+      <option <?php if( $check == $manuf ) echo "selected"; ?> value=<?php echo "'".$manuf."'"?>>Manufacturing</option>
+      <option <?php if( $check == $polish ) echo "selected"; ?> value=<?php echo "'".$polish."'"?>>Polishing</option>
+      <option <?php if( $check == $tools ) echo "selected"; ?> value=<?php echo "'".$tools."'"?>>Tooling</option>
+      <option <?php if( $check == $plating ) echo "selected"; ?> value=<?php echo "'".$plating."'"?>>Plating</option>
+      <option <?php if( $check == $pack ) echo "selected"; ?> value=<?php echo "'".$pack."'"?>>Packaging</option>
     </select>
     <label for="select_item">Select Item:</label>
     <select name="select_item">
       <option value="0">--Select Item--</option>
+      <script>
+      function OnChange(){
+        var tarGet = document.querySelector('.catagory').value;
+        window.location.href = "http://localhost:81/inventory/app/add.php?DataBase=" + tarGet;
+      //   function ChangeUrl(page, url) {
+      //     if (typeof (history.pushState) != "undefined") {
+      //       var obj = { Page: page, Url: url };
+      //       history.pushState(obj, obj.Page, obj.Url);
+      //     } else {
+      //       alert("Browser does not support HTML5.");
+      //     }
+      //   }
+      //   ChangeUrl( tarGet, '?DataBase=' + tarGet);
+      }
+      </script>
       <?php
-        $cat = $_POST['catagory'];
-        $query = returnTable($cat,"other");
-        while( $row = mysqli_fetch_array($query) ){
-          $Fullname = str_replace(" ","_",$row['name']);
-          echo "<option value=". $Fullname.">". $row['name']."</option>";
+        if( isset($_GET['DataBase']) ){
+
+          $cat = $_GET['DataBase'];
+          $_GET['DataBase'] = $cat;
+          if( $cat !== 0 ){
+            $query = returnTable($cat,"other");
+            while( $row = mysqli_fetch_array($query) ){
+              $Fullname = str_replace(" ","_",$row['name']);
+              echo "<option value=". $Fullname.">". str_replace("_"," ",$row['name'])."</option>";
+            }
+          }
         }
       ?>
     </select>

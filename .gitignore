@@ -1,7 +1,6 @@
 node_modules/
 package-lock.json
-*/**/*.css.map
-*/**/*.js.map
+app/temp/
 .buildpath
 .project
 .settings/
