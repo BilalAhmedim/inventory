@@ -19,13 +19,22 @@
     return $result;
   }
 
-  //  Insert Into Tabel
+  //  Insert Into Tabel other
   function insertInto($dataBase,$name){
     $connectTo = connectDb($dataBase);
     $query = "INSERT INTO other (name) VALUE('$name')";
     $sql = mysqli_query($connectTo, $query);
     if( !$sql ){
-      $other = "InsetInfo Function Connection Filed ".mysqli_error($sql);
+      $other = "InsetInTo Function Connection Filed ".mysqli_error($sql);
+    }
+  }
+
+  // intese in to table any
+  function insert($dataBase, $query){
+    $connectTo = connectDb($dataBase);
+    $sql = mysqli_query($connectTo,$query);
+    if( !$sql ){
+      $other = "Inset Function Connection Filed ".mysqli_error($connectTo);
     }
   }
 ?>

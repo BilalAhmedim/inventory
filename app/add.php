@@ -1,6 +1,6 @@
 <?php
   include './assets/includes/modules/_functions.php';
-  include './assets/includes/modules/_addPage_Validation.php';
+  include './assets/includes/modules/add/_add-Page__Validation.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,7 @@
     <h1>Add Item</h1>
   </header>
   <?php
-    if( isset($_GET['success'])){
+    if( !empty($_GET['success'])){
       if( $_GET['success'] ){
         echo "<div class='success-parent'><div class='success'><p>Item <strong>&quot;".$_GET['item_name']."&quot;</strong> Created Successfully.<span class='close'></span></p></div></div>";
       }
@@ -27,9 +27,9 @@
       $check = $_GET['DataBase'];
     }
   ?>
-  <form action="#" method="POST" class="edit" enctype="multipart/form-data">
+  <form action="add.php?success=true" method="POST" class="edit" enctype="multipart/form-data">
     <label for="catagory">Catagory:</label>
-    <select name="catagory" class="catagory" onchange="OnChange()">
+    <select name="catagory" class="catagory" onchange="OnChangeDataBase()" data-database="">
       <option value="0">--Select Catagory--</option>
       <option <?php if( $check == $manuf ) echo "selected"; ?> value=<?php echo "'".$manuf."'"?>>Manufacturing</option>
       <option <?php if( $check == $polish ) echo "selected"; ?> value=<?php echo "'".$polish."'"?>>Polishing</option>
@@ -38,37 +38,41 @@
       <option <?php if( $check == $pack ) echo "selected"; ?> value=<?php echo "'".$pack."'"?>>Packaging</option>
     </select>
     <label for="select_item">Select Item:</label>
-    <select name="select_item">
+    <select name="select_item" class="item_name" onchange="OnChangeName()">
       <option value="0">--Select Item--</option>
-      <script>
-      function OnChange(){
-        var tarGet = document.querySelector('.catagory').value;
-        window.location.href = "http://localhost:81/inventory/app/add.php?DataBase=" + tarGet;
-      //   function ChangeUrl(page, url) {
-      //     if (typeof (history.pushState) != "undefined") {
-      //       var obj = { Page: page, Url: url };
-      //       history.pushState(obj, obj.Page, obj.Url);
-      //     } else {
-      //       alert("Browser does not support HTML5.");
-      //     }
-      //   }
-      //   ChangeUrl( tarGet, '?DataBase=' + tarGet);
-      }
-      </script>
       <?php
         if( isset($_GET['DataBase']) ){
 
           $cat = $_GET['DataBase'];
           $_GET['DataBase'] = $cat;
+          $db = $_GET['item_name'];
           if( $cat !== 0 ){
             $query = returnTable($cat,"other");
             while( $row = mysqli_fetch_array($query) ){
               $Fullname = str_replace(" ","_",$row['name']);
-              echo "<option value=". $Fullname.">". str_replace("_"," ",$row['name'])."</option>";
+              $select='';
+              if($row['name']==$db){
+                $select = "selected";
+              }
+              echo "<option ".$select." value=". $Fullname.">". str_replace("_"," ",$row['name'])."</option>";
             }
           }
         }
+        $db = $_GET['DataBase'];
       ?>
+      <script>
+      function OnChangeDataBase(){
+        var tarGet = document.querySelector('.catagory').value;
+        data = "?DataBase=" + tarGet;
+        window.location.href = data;
+      }
+      var database = '<?php echo $db;?>';
+      function OnChangeName(){
+        var tarGet = document.querySelector('.item_name').value;
+        newdata = "?DataBase="+'<?php echo $db?>' + "&item_name=" + tarGet;
+        return window.location.href = newdata;
+      }
+      </script>
     </select>
     <label for="description">Description:</label>
     <input placeholder="Item Desceiption" type="text" name="description">
@@ -78,6 +82,8 @@
       <option value="Qty">Qty</option>
       <option value="Pc">pc</option>
       <option value="Lt">Ltr</option>
+      <option value="Lt">kgm</option>
+      <option value="Lt">grm</option>
     </select>
     <label for="price">Price</label>
     <input type="number" name="price" placeholder="Enter Amount">
