@@ -29,12 +29,12 @@
     }
   }
 
-  // intese in to table any
+  // insert in to table any
   function insert($dataBase, $query){
-    $connectTo = connectDb($dataBase);
-    $sql = mysqli_query($connectTo,$query);
+    $connectTo = mysqli_connect('localhost', 'root', '', $dataBase);
+    $sql = mysqli_query($connectTo, $query);
     if( !$sql ){
-      $other = "Inset Function Connection Filed ".mysqli_error($connectTo);
+      $other = "Inset Function Connection Failed ".mysqli_error($connectTo);
     }
   }
 ?>

@@ -1,4 +1,6 @@
 <?php
+// all variables
+include './assets/includes/modules/add/_add-page__form-variables.php';
 //  Variables for error Reporting is set to empty
 $catagoryErr = $select_itemErr = $descriptionErr = $amountErr = $amount_comboErr = $priceErr = $supplierErr = $dateErr = $alertErr = '';
 

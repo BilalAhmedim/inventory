@@ -27,7 +27,7 @@
       $check = $_GET['DataBase'];
     }
   ?>
-  <form action="add.php?success=true" method="POST" class="edit" enctype="multipart/form-data">
+  <form method="POST" class="edit" enctype="multipart/form-data">
     <label for="catagory">Catagory:</label>
     <select name="catagory" class="catagory" onchange="OnChangeDataBase()" data-database="">
       <option value="0">--Select Catagory--</option>
@@ -45,35 +45,36 @@
 
           $cat = $_GET['DataBase'];
           $_GET['DataBase'] = $cat;
-          $db = $_GET['item_name'];
+          $item_N = $_GET['item_name'];
           if( $cat !== 0 ){
             $query = returnTable($cat,"other");
             while( $row = mysqli_fetch_array($query) ){
               $Fullname = str_replace(" ","_",$row['name']);
-              $select='';
-              if($row['name']==$db){
-                $select = "selected";
+              $echo = "<option value=". $Fullname." ";
+              $echo1= ">". str_replace("_"," ",$row['name'])."</option>";
+              if($item_N == str_replace(" ","_",$row['name'])){
+                echo $echo ."selected " .$echo1;
+              }else{
+                echo $echo . $echo1;
               }
-              echo "<option ".$select." value=". $Fullname.">". str_replace("_"," ",$row['name'])."</option>";
             }
           }
         }
         $db = $_GET['DataBase'];
       ?>
-      <script>
+    </select>
+    <script>
       function OnChangeDataBase(){
         var tarGet = document.querySelector('.catagory').value;
         data = "?DataBase=" + tarGet;
         window.location.href = data;
       }
-      var database = '<?php echo $db;?>';
       function OnChangeName(){
         var tarGet = document.querySelector('.item_name').value;
         newdata = "?DataBase="+'<?php echo $db?>' + "&item_name=" + tarGet;
-        return window.location.href = newdata;
+        window.location.href = newdata;
       }
-      </script>
-    </select>
+    </script>
     <label for="description">Description:</label>
     <input placeholder="Item Desceiption" type="text" name="description">
     <label for="amount">Amount:</label>
@@ -122,6 +123,9 @@
       }
       if( !empty($alertErr) ){
         echo "<p>" . $alertErr . "</p>";
+      }
+      if( !empty($other) ){
+        echo "<p>" . $other . "</p>";
       }
     ?>
     </label>
