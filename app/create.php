@@ -36,6 +36,12 @@
     </select>
     <label for="item_name">Item Name:</label>
     <input placeholder="Item Name" type="text" name="item_name" >
+    <label for="description">Description:</label>
+    <input type="text" name="description" placeholder="Description">
+    <label for="item_image">Item Image:</label>
+    <input type="file" name="item_image">
+    <label for="alert" class="inline" class="margin-top-small">Alert If Item is Lessthan or is Equal to:</label>
+    <input placeholder="nmbr" type="text" name="alert" class="small-input margin-top-small">
     <label></label>
     <input type="submit" name="submit" class="border-radius-n">
     <label for="error" class="error">

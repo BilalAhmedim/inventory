@@ -75,8 +75,6 @@
         window.location.href = newdata;
       }
     </script>
-    <label for="description">Description:</label>
-    <input placeholder="Item Desceiption" type="text" name="description">
     <label for="amount">Amount:</label>
     <input type="number" name="amount" class="small-input__dubble" placeholder="Enter Amount">
     <select name="amount_combo" class="margin-none">
@@ -91,11 +89,7 @@
     <label for="supplier">Supplier name:</label>
     <input placeholder="Supplier" type="text" name="supplier">
     <label for="purches_date">Purches Date:</label>
-    <input type="date" name="purches_date" class="incress-width">
-    <label for="item_image">Item Image:</label>
-    <input type="file" name="item_image"><br>
-    <label for="alert" class="inline" class="margin-top-small">Alert If Item is Lessthan or is Equal to:</label>
-    <input placeholder="nmbr" type="text" name="alert" class="small-input margin-top-small">
+    <input type="date" name="purches_date" class="incress-width"><br>
     <label></label>
     <input type="submit" name="submit" class="border-radius-n">
     <label for="error" class="error">
