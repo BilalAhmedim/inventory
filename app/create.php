@@ -54,6 +54,10 @@
           echo "<p>".$nameErr."</p>";
           exit();
         }
+        if( !empty($descriptionErr) ){
+          echo "<p>" . $descriptionErr . "</p>";
+          exit();
+        }
         if( !empty($execute_queryErr)){
           echo "<p>".$execute_queryErr."</p>";
           exit();

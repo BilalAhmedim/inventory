@@ -1,7 +1,7 @@
 <?php
   include './assets/includes/modules/_redirect.php';
   $name;
-  $catErr = $nameErr = $execute_queryErr = $success = $other ='';
+  $catErr = $nameErr = $execute_queryErr = $success = $other = $descriptionErr = '';
   if( isset($_POST['submit'] )){
     $catagory = $_POST['catagory'];
     $name = $_POST['item_name'];
@@ -24,6 +24,6 @@
     $selectedDataBase = connectDb($catagory);
     $execute_query = mysqli_query($selectedDataBase, $otherTabel);
     insertInto($catagory,$name);
-    redirect("create.php?success=true&item_name=".$name);
+    redirect("create.php?success=true&item_name=" . $name);
   }
 ?>

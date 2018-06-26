@@ -100,9 +100,9 @@
       if( !empty($select_itemErr) ){
         echo "<p>" . $select_itemErr . "</p>";
       }
-      if( !empty($descriptionErr) ){
-        echo "<p>" . $descriptionErr . "</p>";
-      }
+      // if( !empty($descriptionErr) ){
+      //   echo "<p>" . $descriptionErr . "</p>";
+      // }
       if( !empty($amountErr) ){
         echo "<p>" . $amountErr . "</p>";
       }
@@ -115,9 +115,9 @@
       if( !empty($dateErr) ){
         echo "<p>" . $dateErr . "</p>";
       }
-      if( !empty($alertErr) ){
-        echo "<p>" . $alertErr . "</p>";
-      }
+      // if( !empty($alertErr) ){
+      //   echo "<p>" . $alertErr . "</p>";
+      // }
       if( !empty($other) ){
         echo "<p>" . $other . "</p>";
       }
